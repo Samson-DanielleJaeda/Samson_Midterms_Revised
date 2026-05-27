@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.10.35013.160
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Samson_Midterms", "Samson_Midterms\Samson_Midterms.csproj", "{20756707-DFB1-40BC-A089-87A5DDBBDE04}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{20756707-DFB1-40BC-A089-87A5DDBBDE04}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{20756707-DFB1-40BC-A089-87A5DDBBDE04}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{20756707-DFB1-40BC-A089-87A5DDBBDE04}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{20756707-DFB1-40BC-A089-87A5DDBBDE04}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {D8D83C12-E3E3-4CFF-99A7-7CDFD8A77E33}
+	EndGlobalSection
+EndGlobal
