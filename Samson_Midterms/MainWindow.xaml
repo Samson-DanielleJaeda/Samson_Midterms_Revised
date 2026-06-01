@@ -1,7 +1,7 @@
 ﻿<Window x:Class="List3.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        Title="MainWindow" Height="450" Width="850">
+        Title="MainWindow" Height="450" Width="950">
 
     <Grid Background="Beige">
 
@@ -11,37 +11,36 @@
                Margin="0,10,0,0"
                FontSize="20"/>
 
-        
         <DataGrid Name="ItemGrid"
                   HorizontalAlignment="Left"
                   VerticalAlignment="Top"
                   Margin="22,62,0,0"
                   Height="252"
-                  Width="372"
-                  AutoGenerateColumns="False">
+                  Width="420"
+                  AutoGenerateColumns="False"
+                  SelectionChanged="ItemGrid_SelectionChanged">
 
             <DataGrid.Columns>
                 <DataGridTextColumn Header="ID" Binding="{Binding ItemID}" Width="50"/>
                 <DataGridTextColumn Header="Name" Binding="{Binding ItemName}" Width="120"/>
-                <DataGridTextColumn Header="Description" Binding="{Binding ItemDescription}" Width="150"/>
-                <DataGridTextColumn Header="Price" Binding="{Binding ItemPrice}" Width="50"/>
+                <DataGridTextColumn Header="Description" Binding="{Binding ItemDescription}" Width="180"/>
+                <DataGridTextColumn Header="Price" Binding="{Binding ItemPrice}" Width="70"/>
             </DataGrid.Columns>
         </DataGrid>
 
-        
         <DataGrid Name="CartGrid"
                   HorizontalAlignment="Right"
                   VerticalAlignment="Top"
                   Margin="0,62,22,0"
                   Height="252"
-                  Width="372"
+                  Width="420"
                   AutoGenerateColumns="False">
 
             <DataGrid.Columns>
                 <DataGridTextColumn Header="ID" Binding="{Binding ItemID}" Width="50"/>
                 <DataGridTextColumn Header="Name" Binding="{Binding ItemName}" Width="120"/>
-                <DataGridTextColumn Header="Description" Binding="{Binding ItemDescription}" Width="150"/>
-                <DataGridTextColumn Header="Price" Binding="{Binding ItemPrice}" Width="50"/>
+                <DataGridTextColumn Header="Description" Binding="{Binding ItemDescription}" Width="180"/>
+                <DataGridTextColumn Header="Price" Binding="{Binding ItemPrice}" Width="70"/>
             </DataGrid.Columns>
         </DataGrid>
 
@@ -52,7 +51,7 @@
 
             <StackPanel Margin="5">
                 <Label Content="ID"/>
-                <TextBox Name="ItemID" Width="50"/>
+                <TextBox Name="ItemID" Width="40"/>
             </StackPanel>
 
             <StackPanel Margin="5">
@@ -102,7 +101,7 @@
                         Margin="5"
                         Click="AddToCartButtonClick"
                         Background="Orange"/>
-                
+
                 <Button Content="Remove From Cart"
                         Width="115"
                         Height="23"
@@ -116,5 +115,4 @@
         </StackPanel>
 
     </Grid>
-
 </Window>

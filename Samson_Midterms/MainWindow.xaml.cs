@@ -1,5 +1,5 @@
 ﻿using System;
-using System.Collections.ObjectModel;
+using System.Collections.Generic;
 using System.ComponentModel;
 using System.Windows;
 using System.Windows.Controls;
@@ -47,15 +47,12 @@ namespace List3
             }
         }
 
-        private ObservableCollection<ItemInformation> items = new ObservableCollection<ItemInformation>();
-        private ObservableCollection<ItemInformation> cartItems = new ObservableCollection<ItemInformation>();
+        private List<ItemInformation> items = new List<ItemInformation>();
+        private List<ItemInformation> cartItems = new List<ItemInformation>();
 
         public MainWindow()
         {
             InitializeComponent();
-
-            ItemGrid.ItemsSource = items;
-            CartGrid.ItemsSource = cartItems;
 
             items.Add(new ItemInformation
             {
@@ -72,6 +69,17 @@ namespace List3
                 ItemDescription = "Blue ink pen",
                 ItemPrice = "15.00"
             });
+
+            RefreshGrids();
+        }
+
+        private void RefreshGrids()
+        {
+            ItemGrid.ItemsSource = null;
+            ItemGrid.ItemsSource = items;
+
+            CartGrid.ItemsSource = null;
+            CartGrid.ItemsSource = cartItems;
         }
 
         private void AddButtonClick(object sender, RoutedEventArgs e)
@@ -95,6 +103,7 @@ namespace List3
                     ItemPrice = ItemPrice.Text
                 });
 
+                RefreshGrids();
                 ClearFields();
             }
             catch
@@ -114,6 +123,9 @@ namespace List3
                     ItemDescription = selected.ItemDescription,
                     ItemPrice = selected.ItemPrice
                 });
+
+                RefreshGrids();
+                ClearFields();
             }
             else
             {
@@ -126,33 +138,14 @@ namespace List3
             if (ItemGrid.SelectedItem is ItemInformation selectedItem)
             {
                 items.Remove(selectedItem);
-            }
-            else if (CartGrid.SelectedItem is ItemInformation selectedCartItem)
-            {
-                cartItems.Remove(selectedCartItem);
+                RefreshGrids();
             }
             else
             {
-                MessageBox.Show("Please select an item to remove.");
+                MessageBox.Show("Please select an item from the available products list to remove.");
             }
 
             ClearFields();
-        }
-
-        private void ClearButtonClick(object sender, RoutedEventArgs e)
-        {
-            ClearFields();
-        }
-
-        private void ItemGrid_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-            if (ItemGrid.SelectedItem is ItemInformation selected)
-            {
-                ItemID.Text = selected.ItemID.ToString();
-                ItemName.Text = selected.ItemName;
-                ItemDescription.Text = selected.ItemDescription;
-                ItemPrice.Text = selected.ItemPrice;
-            }
         }
 
         private void RemoveFromCartButtonClick(object sender, RoutedEventArgs e)
@@ -173,6 +166,7 @@ namespace List3
                 if (result == MessageBoxResult.Yes)
                 {
                     cartItems.Remove(selectedCartItem);
+                    RefreshGrids();
                     ClearFields();
                 }
             }
@@ -181,6 +175,23 @@ namespace List3
                 MessageBox.Show("Please select an item from the shopping cart first.");
             }
         }
+
+        private void ClearButtonClick(object sender, RoutedEventArgs e)
+        {
+            ClearFields();
+        }
+
+        private void ItemGrid_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if (ItemGrid.SelectedItem is ItemInformation selected)
+            {
+                ItemID.Text = selected.ItemID.ToString();
+                ItemName.Text = selected.ItemName;
+                ItemDescription.Text = selected.ItemDescription;
+                ItemPrice.Text = selected.ItemPrice;
+            }
+        }
+
         private void ClearFields()
         {
             ItemID.Clear();
