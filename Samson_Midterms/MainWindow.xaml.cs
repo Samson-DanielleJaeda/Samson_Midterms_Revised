@@ -155,6 +155,32 @@ namespace List3
             }
         }
 
+        private void RemoveFromCartButtonClick(object sender, RoutedEventArgs e)
+        {
+            if (CartGrid.SelectedItem is ItemInformation selectedCartItem)
+            {
+                MessageBoxResult result = MessageBox.Show(
+                    $"Are you sure you want to remove this item from the cart?\n\n" +
+                    $"ID: {selectedCartItem.ItemID}\n" +
+                    $"Name: {selectedCartItem.ItemName}\n" +
+                    $"Description: {selectedCartItem.ItemDescription}\n" +
+                    $"Price: {selectedCartItem.ItemPrice}",
+                    "Confirm Remove From Cart",
+                    MessageBoxButton.YesNo,
+                    MessageBoxImage.Question
+                );
+
+                if (result == MessageBoxResult.Yes)
+                {
+                    cartItems.Remove(selectedCartItem);
+                    ClearFields();
+                }
+            }
+            else
+            {
+                MessageBox.Show("Please select an item from the shopping cart first.");
+            }
+        }
         private void ClearFields()
         {
             ItemID.Clear();

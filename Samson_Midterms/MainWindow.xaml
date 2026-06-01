@@ -57,7 +57,7 @@
 
             <StackPanel Margin="5">
                 <Label Content="Name"/>
-                <TextBox Name="ItemName" Width="120"/>
+                <TextBox Name="ItemName" Width="100"/>
             </StackPanel>
 
             <StackPanel Margin="5">
@@ -67,7 +67,7 @@
 
             <StackPanel Margin="5">
                 <Label Content="Price"/>
-                <TextBox Name="ItemPrice" Width="100"/>
+                <TextBox Name="ItemPrice" Width="50"/>
             </StackPanel>
 
             <StackPanel Orientation="Horizontal"
@@ -102,6 +102,14 @@
                         Margin="5"
                         Click="AddToCartButtonClick"
                         Background="Orange"/>
+                
+                <Button Content="Remove From Cart"
+                        Width="115"
+                        Height="23"
+                        Margin="5"
+                        Click="RemoveFromCartButtonClick"
+                        Background="DarkRed"
+                        Foreground="White"/>
 
             </StackPanel>
 
